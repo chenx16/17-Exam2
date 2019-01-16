@@ -87,10 +87,10 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    # run_test_init()
-    # run_test_area()
-    # run_test_bigger_triangle()
-    # run_test_shrink_or_expand()
+    run_test_init()
+    run_test_area()
+    run_test_bigger_triangle()
+    run_test_shrink_or_expand()
     run_test_return_doubled_triangle()
     run_test_get_largest_area()
 
@@ -182,11 +182,14 @@ class Triangle(object):
         Type hints:
           :rtype: float
         """
+
         s1=self.a.distance_from(self.b)
         s2=self.b.distance_from(self.c)
         s3=self.c.distance_from(self.a)
         p=(s1+s2+s3)/2
-        return math.sqrt(p*(p-s1)*(p-s2)*(p-s3))
+        A=math.sqrt(p*(p-s1)*(p-s2)*(p-s3))
+        return A
+
         # ---------------------------------------------------------------------
         # done: 3.
         #   a. READ the above specification, including the Example AND HINT!
@@ -236,12 +239,14 @@ class Triangle(object):
          Type hints:
            :type: f: float
         """
+
         self.a.x = self.a.x*f
         self.a.y = self.a.y * f
         self.b.x = self.b.x*f
         self.b.y = self.b.y * f
         self.c.x =self.c.x*f
         self.c.y = self.c.y * f
+
         # ---------------------------------------------------------------------
         # done 8:
         #   a. READ the above specification, including the Example.
@@ -296,18 +301,11 @@ class Triangle(object):
         Type hints:
           :rtype: Float:
         """
-        s1 = self.a.distance_from(self.b)
-        s2 = self.b.distance_from(self.c)
-        s3 = self.c.distance_from(self.a)
-        p = (s1 + s2 + s3) / 2
-        A=math.sqrt(p * (p - s1) * (p - s2) * (p - s3))
-        if self.area()<A:
-            return A
-        else:
-            return self.area()
+
+        return self.area()
 
         # ---------------------------------------------------------------------
-        # TODO: 9
+        # done: 9
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
