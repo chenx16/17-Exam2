@@ -3,8 +3,8 @@ Exam 2, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Xinlai Chen.
+"""  # done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import math
 import time
@@ -13,7 +13,7 @@ import testing_helper
 
 
 ###############################################################################
-# TODO: 2.  READ the   Point   class defined below.
+# done: 2.  READ the   Point   class defined below.
 #  Note especially its methods:
 #    clone
 #    distance_from
@@ -91,8 +91,8 @@ def main():
     # run_test_area()
     # run_test_bigger_triangle()
     # run_test_shrink_or_expand()
-    # run_test_return_doubled_triangle()
-    # run_test_get_largest_area()
+    run_test_return_doubled_triangle()
+    run_test_get_largest_area()
 
 
 ###############################################################################
@@ -137,8 +137,13 @@ class Triangle(object):
           :type b: Point
           :type c: Point
         """
+        self.a=a.clone()
+        self.b=b.clone()
+        self.c=c.clone()
+
+
         # ---------------------------------------------------------------------
-        # TODO: 2.
+        # done: 2.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -177,8 +182,13 @@ class Triangle(object):
         Type hints:
           :rtype: float
         """
+        s1=self.a.distance_from(self.b)
+        s2=self.b.distance_from(self.c)
+        s3=self.c.distance_from(self.a)
+        p=(s1+s2+s3)/2
+        return math.sqrt(p*(p-s1)*(p-s2)*(p-s3))
         # ---------------------------------------------------------------------
-        # TODO: 3.
+        # done: 3.
         #   a. READ the above specification, including the Example AND HINT!
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -200,8 +210,11 @@ class Triangle(object):
           :type: triangle2: Triangle
           :rtype: bool
         """
+        if triangle2.area()<self.area():
+            return True
+        return False
         # ---------------------------------------------------------------------
-        # TODO 4:
+        # done 4:
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -223,8 +236,14 @@ class Triangle(object):
          Type hints:
            :type: f: float
         """
+        self.a.x = self.a.x*f
+        self.a.y = self.a.y * f
+        self.b.x = self.b.x*f
+        self.b.y = self.b.y * f
+        self.c.x =self.c.x*f
+        self.c.y = self.c.y * f
         # ---------------------------------------------------------------------
-        # TODO 8:
+        # done 8:
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -246,8 +265,15 @@ class Triangle(object):
         Type hints:
           :rtype: Triangle:
         """
+        self.a.x = self.a.x * 2
+        self.a.y = self.a.y*2
+        self.b.x = self.b.x * 2
+        self.b.y = self.b.y*2
+        self.c.x = self.c.x * 2
+        self.c.y = self.c.y*2
+        return self
         # -------------------------------------------------------------------------
-        # TODO: 9
+        # done: 9
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -270,6 +296,16 @@ class Triangle(object):
         Type hints:
           :rtype: Float:
         """
+        s1 = self.a.distance_from(self.b)
+        s2 = self.b.distance_from(self.c)
+        s3 = self.c.distance_from(self.a)
+        p = (s1 + s2 + s3) / 2
+        A=math.sqrt(p * (p - s1) * (p - s2) * (p - s3))
+        if self.area()<A:
+            return A
+        else:
+            return self.area()
+
         # ---------------------------------------------------------------------
         # TODO: 9
         #   a. READ the above specification, including the Example.
