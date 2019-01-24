@@ -533,7 +533,7 @@ def run_test_get_largest_area():
     area3 = t1.area()
 
     print()
-    print('Expected for get_largest_area:', area2)
+    print('Expected for get_largest_area:', area3)
     print('                       Actual:', t1.get_largest_area())
 
 
